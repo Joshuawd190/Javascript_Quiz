@@ -8,14 +8,14 @@
     <title>JavaScript Quiz by Joshua Wood</title>
   </head>
   <body>
-    <header>
+    <header id="display" class="hide">
       <!-- Header will contain the timer and the highscore link  -->
       <span
-        ><button class="highscore hide" id="highscore">
+        ><button class="highscore" id="score-link">
           View highscores
         </button></span
       >
-      <span class="timer hide" id="timer">Time: 346</span>
+      <span class="timer">Time: <span id="timer"></span></span>
     </header>
     <div class="container start" id="start-card">
       <!-- start card goes here -->
@@ -25,27 +25,28 @@
         subtracts from your time remaining! Your time is your score! How high
         can you get?!
       </br>
-        <button class="btn">Start!</button>
+        <button class="btn" id="startbtn">Start!</button>
       </p>
     </div>
     <!-- Main body of quiz will go here -->
 
     <div class="container hide" id="quiz-main">
       <div class="question">
-        <h1>Question</h1>
+        <h1 id="question-text">Question</h1>
         <!-- questions will go here -->
       </div>
       <div class="choices">
         <!-- buttons with the possible answers will go here  -->
-        <button class="answer-btn">1 answer</button>
-        <button class="answer-btn">1 answer</button>
-        <button class="answer-btn">1 answer</button>
-        <button class="answer-btn">1 answer</button>
+        <button class="answer-btn" id="A1"></button>
+        <button class="answer-btn" id="A2"></button>
+        <button class="answer-btn" id="A3"></button>
+        <button class="answer-btn" id="A4"></button>
+        
        
       </div>
-      <div class="indicator hide">
+      <div class="indicator hide" id="indicator">
         <!-- the correct/incorrect indicator will go here  -->
-        <h2>correct</h2>
+        
       </div>
     </div>
 
@@ -55,12 +56,12 @@
     </br>
       <p>Your final score is <span id="finalscore"></span></p>
 </br>
-      <p>Enter your initials: <input type="text"></input> <button class="answer-btn">Submit</button></p>
+      <p>Enter your initials: <input type="text" id="highscore-name"></input> <button class="answer-btn" id="submit">Submit</button></p>
     </div>
-    <div class="container hide" id="scorelist">
+    <div class="container hide" id="highscore-card">
       <!-- highscores go here  -->
 
-      <ul>
+      <ul id="highscore-list">
           <li>
               Highscore1
           </li>
@@ -76,7 +77,7 @@
       </ul>
     </br>
         <p>
-          <button class="answer-btn">Try Again!</button><button class="answer-btn">Clear Highscores</button>
+          <button class="answer-btn" id="try-again">Try Again!</button><button class="answer-btn" id="clear">Clear Highscores</button>
         </p>
     </div>
 
