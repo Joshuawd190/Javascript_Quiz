@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
@@ -14,7 +15,11 @@ header {
   align-self: left;
   margin: 1rem;
   font-size: 1.5rem;
+  color: #cc00cc;
+  border: none;
+  background-color: white;
 }
+
 .timer {
   display: flex;
   align-self: right;
@@ -25,16 +30,39 @@ header {
 .container {
   display: flex;
   flex-direction: column;
-  margin: 20% auto;
+  margin: 15% auto;
   width: 50%;
   padding: 1rem;
 }
+.start {
+  text-align: center;
+  margin: 10% auto;
+}
+.start p {
+  margin: 1rem;
+  font-size: 1.2rem;
+}
+
+.btn {
+  background-color: #6600cc;
+  border-radius: 4px;
+  color: white;
+  margin: 1rem;
+  outline: none;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  text-align: center;
+  width: fit-content;
+  font-size: 2rem;
+}
+
 .choices {
   display: flex;
   flex-direction: column;
   margin: 0.5rem 0;
+  width: fit-content;
 }
-button {
+.answer-btn {
   background-color: #6600cc;
   border-radius: 4px;
   color: white;
@@ -42,8 +70,36 @@ button {
   outline: none;
   padding: 0.5rem 0.5rem;
   border: none;
+  /* align-self: flex-start; */
+  text-align: left;
+}
+.answer-btn:hover,
+.btn:hover {
+  background-color: #cc00cc;
+}
+.indicator {
+  border-top: 2px solid gray;
+  display: inline-block;
+  color: gray;
+  padding: 0.5rem;
 }
 
+#endcard p {
+  font-size: 1.2rem;
+}
+
+ul {
+  list-style: none;
+  background-color: #e699ff;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+li {
+  color: white;
+  margin: 0.2rem;
+  padding: 0.2rem;
+}
 .hide {
   display: none;
 }

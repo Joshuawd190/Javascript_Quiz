@@ -10,27 +10,76 @@
   <body>
     <header>
       <!-- Header will contain the timer and the highscore link  -->
-      <span><a class="highscore hide" id="highscore">View highscores</a></span>
+      <span
+        ><button class="highscore hide" id="highscore">
+          View highscores
+        </button></span
+      >
       <span class="timer hide" id="timer">Time: 346</span>
     </header>
+    <div class="container start" id="start-card">
+      <!-- start card goes here -->
+      <h1>JavaScript Coding Quiz</h1>
+      <p>
+        Try out my JavaScript quiz! This quiz is timed and every wrong answer
+        subtracts from your time remaining! Your time is your score! How high
+        can you get?!
+      </br>
+        <button class="btn">Start!</button>
+      </p>
+    </div>
     <!-- Main body of quiz will go here -->
-    <div class="container">
+
+    <div class="container hide" id="quiz-main">
       <div class="question">
         <h1>Question</h1>
         <!-- questions will go here -->
       </div>
       <div class="choices">
         <!-- buttons with the possible answers will go here  -->
-        <button>1 answer</button>
-        <button>1 answer</button>
-        <button>1 answer</button>
-        <button>1 answer</button>
+        <button class="answer-btn">1 answer</button>
+        <button class="answer-btn">1 answer</button>
+        <button class="answer-btn">1 answer</button>
+        <button class="answer-btn">1 answer</button>
+       
       </div>
       <div class="indicator hide">
         <!-- the correct/incorrect indicator will go here  -->
-        correct/incorrect
+        <h2>correct</h2>
       </div>
     </div>
+
+    <div class="container hide" id="endcard">
+      <!-- end card goes here  -->
+      <h1>Finished!</h1>
+    </br>
+      <p>Your final score is <span id="finalscore"></span></p>
+</br>
+      <p>Enter your initials: <input type="text"></input> <button class="answer-btn">Submit</button></p>
+    </div>
+    <div class="container hide" id="scorelist">
+      <!-- highscores go here  -->
+
+      <ul>
+          <li>
+              Highscore1
+          </li>
+          <li>
+              Highscore2
+          </li>
+          <li>
+              Highscore3
+          </li>
+          <li>
+              Highscore4
+          </li>
+      </ul>
+    </br>
+        <p>
+          <button class="answer-btn">Try Again!</button><button class="answer-btn">Clear Highscores</button>
+        </p>
+    </div>
+
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
