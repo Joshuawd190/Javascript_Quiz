@@ -92,13 +92,26 @@ var showQuestion = function (questionsArry) {
   answer2.textContent = questionsArry.a2;
   answer3.textContent = questionsArry.a3;
   answer4.textContent = questionsArry.a4;
-  answer1.addEventListener("click", checkAnswer);
-  answer2.addEventListener("click", checkAnswer);
-  answer3.addEventListener("click", checkAnswer);
-  answer4.addEventListener("click", checkAnswer);
+  answer1.addEventListener("click", checkAnswer(answer1));
+  answer2.addEventListener("click", checkAnswer(answer2));
+  answer3.addEventListener("click", checkAnswer(answer3));
+  answer4.addEventListener("click", checkAnswer(answer4));
 };
 
-var checkAnswer = function (questionsArry) {};
+var checkAnswer = function (answer) {
+  if (answer === questionsArry[questionIndex].key) {
+    indicator.innerHTML = "<h2>Correct!</h2>";
+    indicator.classList.remove("hide");
+  }
+ else if (!answer === questionsArry[questionIndex].key) {
+    indicator.innerHTML = "<h2>Incorrect!</h2>";
+    indicator.classList.remove("hide");
+  } else{
+      return;
+  }
+  }
+  questionIndex++;
+};
 // var quizQuestion = function (i) {
 //   questionDisplay.textContent = questionsArry[i].q;
 //   answer1.textContent = questionsArry[i].a1;
