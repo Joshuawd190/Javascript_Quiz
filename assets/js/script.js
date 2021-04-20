@@ -1,6 +1,6 @@
 //start button
-const startButton = document.getElementById("startbtn");
 const startCard = document.getElementById("start-card");
+const startButton = document.getElementById("startbtn");
 
 //Top display
 const headerDisplay = document.getElementById("display");
@@ -28,6 +28,7 @@ const highscoreList = document.getElementById("highscore-list");
 const tryAgainBtn = document.getElementById("try-again");
 const clearScores = document.getElementById("clear");
 
+let timer = 300;
 let questionIndex = 0;
 let questionsArry = [
   {
@@ -60,7 +61,7 @@ let questionsArry = [
     a2: "Start",
     a3: "2",
     a4: "0",
-    key: "",
+    key: "0",
   },
   {
     q: "Variable functions must be declared _____",
@@ -72,6 +73,7 @@ let questionsArry = [
   },
 ];
 
+var captureAnswer;
 var startGame = function () {
   //hide the start card
   console.log("working");
@@ -79,90 +81,61 @@ var startGame = function () {
   //go to questions function
   headerDisplay.classList.remove("hide");
   quizMain.classList.remove("hide");
-  quizQuestion(questionIndex);
+  quizQuestion();
 };
 
-var quizQuestion = function (questionIndex) {
-  showQuestion(questionsArry[questionIndex]);
+var quizQuestion = function () {
+  //check questions remaining, time remaining, call end game if either is 0 or less
+  if (questionIndex > questionsArry.length - 1 || timer <= 0) {
+    endGame();
+  } else {
+    showQuestion(questionsArry[questionIndex]);
+  }
 };
 
 var showQuestion = function (questionsArry) {
+  console.log(questionsArry);
   questionDisplay.textContent = questionsArry.q;
   answer1.textContent = questionsArry.a1;
   answer2.textContent = questionsArry.a2;
   answer3.textContent = questionsArry.a3;
   answer4.textContent = questionsArry.a4;
-  answer1.addEventListener("click", checkAnswer(answer1));
-  answer2.addEventListener("click", checkAnswer(answer2));
-  answer3.addEventListener("click", checkAnswer(answer3));
-  answer4.addEventListener("click", checkAnswer(answer4));
+
+  answer1.addEventListener("click", getAnswer);
+  answer2.addEventListener("click", getAnswer);
+  answer3.addEventListener("click", getAnswer);
+  answer4.addEventListener("click", getAnswer);
 };
 
-var checkAnswer = function (answer) {
-  if (answer === questionsArry[questionIndex].key) {
+var getAnswer = function () {
+  console.log(this);
+  captureAnswer = this.textContent;
+  console.log(captureAnswer);
+  checkAnswer(captureAnswer);
+};
+
+var checkAnswer = function (captureAnswer) {
+  console.log(captureAnswer);
+  console.log(questionsArry[questionIndex].key);
+
+  if (captureAnswer === questionsArry[questionIndex].key) {
     indicator.innerHTML = "<h2>Correct!</h2>";
     indicator.classList.remove("hide");
-  }
- else if (!answer === questionsArry[questionIndex].key) {
+  } else {
     indicator.innerHTML = "<h2>Incorrect!</h2>";
     indicator.classList.remove("hide");
-  } else{
-      return;
-  }
+    timer = timer - 10;
   }
   questionIndex++;
+  quizQuestion();
 };
-// var quizQuestion = function (i) {
-//   questionDisplay.textContent = questionsArry[i].q;
-//   answer1.textContent = questionsArry[i].a1;
-//   answer2.textContent = questionsArry[i].a2;
-//   answer3.textContent = questionsArry[i].a3;
-//   answer4.textContent = questionsArry[i].a4;
-//   var checkAnswer
-
-//   answer1.addEventListener("click", (e) => {
-//     if (answer1.textContent === questionsArry[i].key) {
-//       checkAnswer = true;
-//     } else {
-//       checkAnswer = false;
-//     }
-//   });
-//   answer2.addEventListener("click", (e) => {
-//     if (answer2.textContent === questionsArry[i].key) {
-//       checkAnswer = true;
-//     } else {
-//       checkAnswer = false;
-//     }
-//   });
-//   answer3.addEventListener("click", (e) => {
-//     if (answer4.textContent === questionsArry[i].key) {
-//       checkAnswer = true;
-//     } else {
-//       checkAnswer = false;
-//     }
-//   });
-//   answer4.addEventListener("click", (e) => {
-//     if (answer4.textContent === questionsArry[i].key) {
-//       checkAnswer = true;
-//     } else {
-//       checkAnswer = false;
-//     }
-//   });
-
-//   if (checkAnswer) {
-//     indicator.innerHTML = "<h2>Correct!</h2>";
-//     indicator.classList.remove("hide");
-//   } else {
-//     indicator.innerHTML = "<h2>Incorrect!</h2>";
-//     indicator.classList.remove("hide");
-//   }
-
-//   questionIndex++;
-//   quizQuestion(questionIndex);
-// };
 
 var endGame = function () {
   //display end card
+  headerDisplay.classList.add("hide");
+  quizMain.classList.add("hide");
+  endCard.classList.remove("hide");
+  finalScore.innerText = timer;
   //display highscores
 };
 
